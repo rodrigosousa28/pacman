@@ -5,7 +5,7 @@ public abstract class Personagem {
 	protected int x;
 	protected int y;
 	@SuppressWarnings("unused")
-	private Matriz matriz;
+	protected Matriz matriz;
 
 	public Personagem(Matriz matriz) {
 		this.matriz = matriz;
