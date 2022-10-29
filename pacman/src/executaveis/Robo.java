@@ -1,13 +1,12 @@
 package executaveis;
 
 public class Robo extends Personagem{
-	private int x;
-	private int y;
 	private final String HEROI;
 	private Matriz matriz;
 
 	public Robo(String color, Matriz matriz) {
 		super(matriz);
+		this.matriz = matriz; 	
 		this.x = 5;
 		this.y = 5;
 		

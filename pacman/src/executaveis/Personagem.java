@@ -2,8 +2,8 @@ package executaveis;
 
 public abstract class Personagem {
 
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 	@SuppressWarnings("unused")
 	private Matriz matriz;
 

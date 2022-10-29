@@ -17,7 +17,7 @@ public class Obstaculo extends Personagem{
 		
 		switch(matriz.getModoDeJogo()) {
 		case 1:
-			ANSI_COLOR = "\u001B[31m";
+			ANSI_COLOR = "\u001B[36m";
 			OBSTACULO = ANSI_COLOR + "🐺 " + ANSI_RESET;
 			break;
 		case 2:
