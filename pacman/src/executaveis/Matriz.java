@@ -1,7 +1,5 @@
 package executaveis;
 
-import java.util.Random;
-
 public class Matriz {
 
 	private final int linhas;
@@ -66,20 +64,13 @@ public class Matriz {
 		campo[linha][coluna] = s;
 	}
 	
-	//NÃO usar no método main
-	public void setObstaculos(String obstaculo){
-		Random random = new Random();
-		int linhaObstaculo = random.nextInt(1, 6);
-		int colunaObstaculo = random.nextInt(5, 11);
-		setPosicao(linhaObstaculo, colunaObstaculo, obstaculo);
-	}
-	
 	/*Usar no método main, somente quando o usuário
 	Informar onde irá se localizar o objetivo, deve-se usar
 	imediatamente após instanciar a matriz, e só depois
  	instanciar o Robô, pois o robô vai ter como base
 	o modo de jogo para ser definido qual personagem
 	vai representá-lo*/
+	@SuppressWarnings("unused")
 	public void setModoDeJogo(int linha, int coluna, int modo) {
 		/*Perguntar pro PH se pode deixar o objetivo 
 		ficar numa posição gerada aleatoriamente, assim como
@@ -90,44 +81,37 @@ public class Matriz {
 		case 1:
 			ANSI_COLOR = "\u001B[33m";
 			objetivo = ANSI_COLOR + "🌽" + ANSI_RESET;
-			setObstaculos("🐺");
-			setObstaculos("🐺");
 			break;
 		case 2:
 			ANSI_COLOR = "\u001B[31m";
 			objetivo = ANSI_COLOR + "❤" + ANSI_RESET;
-			setObstaculos("🧙‍♀️‍");
-			setObstaculos("🧙‍♀️‍");
 			break;
 		case 3:
 			ANSI_COLOR = "\u001B[32m";
-			setObstaculos(ANSI_COLOR + "🧟" + ANSI_RESET);
-			setObstaculos(ANSI_COLOR + "🧟" + ANSI_RESET);
 			objetivo = "🦹‍♂️";
 			break;
 		case 4:
 			ANSI_COLOR = "\u001B[33m";
-			setObstaculos("🐈");
-			setObstaculos("🐈");
 			objetivo = ANSI_COLOR + "🧀" + ANSI_RESET;;
 		}
 		setPosicao(linha, coluna, objetivo);
 		modoDeJogo = modo;
+		
+		/*Sempre vai colocar 2 obstáculos
+		Caso tenha niveis de dificuldade,
+		A quantidade pode aumentar*/
+		Obstaculo o1 = new Obstaculo(this);
+		Obstaculo o2 = new Obstaculo(this);
 	}
 	
-	/*public void moverObstaculos() {
-		Talvez implementar futuramente, caso dê tempo
-		Minha ideia é esse método ser chamado sempre
-		O método mover da classe robô for executado
-	}*/
-	
-	//Usado para auxiliar no construtor da classe robo
+	/*Usado para auxiliar no construtor da classe robo
+	e da classe Obstaculo*/
 	public int getModoDeJogo() {
 		return modoDeJogo;
 	}
 	
-	//Preciso modificar algumas coisas nessa classe Matriz
-	//para dar usabilidade a esses métodos
+	/*Preciso modificar algumas coisas nessa classe Matriz
+	para dar usabilidade a esses métodos*/
 	public int getColunaAlimento() {
 		return colunaObjetivo;
 	}

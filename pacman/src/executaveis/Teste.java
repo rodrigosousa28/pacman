@@ -8,17 +8,14 @@ public class Teste {
 	public static void main(String[] args) {
 		
 		Matriz m = new Matriz();
-		m.setModoDeJogo(2, 8, 4);
+		m.setModoDeJogo(2, 8, 2);
 		Robo r = new Robo("preto", m);
 		r.mover("up");
 		r.mover("right");
 		
 		System.out.println(m);
 		
-		/*Scanner scan = new Scanner(System.in);
-		System.out.print("Escolha um movimento: ");
-		String comando = scan.nextLine();
-		
+		/*
 		while(!(comando.equalsIgnoreCase("up") || comando.equalsIgnoreCase("down")
 				|| comando.equalsIgnoreCase("left") || comando.equalsIgnoreCase("right"))){
 			System.out.println("Comando invalido, digite uma das opcoes: "

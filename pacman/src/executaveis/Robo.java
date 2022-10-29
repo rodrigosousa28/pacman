@@ -1,13 +1,13 @@
 package executaveis;
 
-public class Robo {
+public class Robo extends Personagem{
 	private int x;
 	private int y;
-	private final String COLOR;
+	private final String HEROI;
 	private Matriz matriz;
 
 	public Robo(String color, Matriz matriz) {
-		this.matriz = matriz;
+		super(matriz);
 		this.x = 5;
 		this.y = 5;
 		
@@ -44,35 +44,12 @@ public class Robo {
 			break;
 		}
 		color = ANSI_COLOR + emoji + ANSI_RESET;
-		this.COLOR = color;
-		this.matriz.setPosicao(x, y, this.COLOR);
+		this.HEROI = color;
+		matriz.setPosicao(x, y, this.HEROI);
 	}
 
-	//Esses get e set tudin, acho que vou tirar
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	public String getColor() {
-		return COLOR;
-	}
-	
-	//Acho que vou tirar esse, já que a 
-	//matriz é definida já no construtor
-	public void setMatriz(Matriz matriz) {
-		this.matriz = matriz;
+	public String getHeroi() {
+		return HEROI;
 	}
 	
 	public void mover(String comando) {
@@ -101,7 +78,7 @@ public class Robo {
 		linhaRobo = getY();
 		colunaRobo = getX();
 		
-		matriz.setPosicao(linhaRobo, colunaRobo, getColor());
+		matriz.setPosicao(linhaRobo, colunaRobo, getHeroi());
 		
 	}
 	
@@ -131,7 +108,7 @@ public class Robo {
 		linhaRobo = getY();
 		colunaRobo = getX();
 		
-		matriz.setPosicao(linhaRobo, colunaRobo, getColor());
+		matriz.setPosicao(linhaRobo, colunaRobo, getHeroi());
 		
 	}
 
