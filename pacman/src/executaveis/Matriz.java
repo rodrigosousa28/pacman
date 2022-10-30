@@ -9,6 +9,9 @@ public class Matriz {
 	private int linhaObjetivo;
 	private int colunaObjetivo;
 	private int modoDeJogo;
+	private Robo robo;
+	private Obstaculo o1;
+	private Obstaculo o2;
 
 	/*Construtor da classe matriz sempre terá 11 linhas
 	 e 11 colunas, aí a área usável pelo robô vai ser
@@ -48,15 +51,20 @@ public class Matriz {
 		m += "————————————————————————————————————";
 		return m;
 	}
-
-	//Esses dois eu coloquei só por padrão
-	//mas acho que não precisa, talvez eu tire depois
-	public int getLinhas() {
-		return linhas;
+	
+	public void setRobo(Robo robo) {
+		this.robo = robo;
 	}
-
-	public int getColunas() {
-		return colunas;
+	
+	public Robo getRobo() {
+		return robo;
+	}
+	
+	public Obstaculo getObstaculo1() {
+		return o1;
+	}
+	public Obstaculo getObstaculo2() {
+		return o2;
 	}
 	
 	//NÃO usar no metodo main
@@ -100,8 +108,8 @@ public class Matriz {
 		/*Sempre vai colocar 2 obstáculos
 		Caso tenha niveis de dificuldade,
 		A quantidade pode aumentar*/
-		Obstaculo o1 = new Obstaculo(this);
-		Obstaculo o2 = new Obstaculo(this);
+		o1 = new Obstaculo(this);
+		o2 = new Obstaculo(this);
 	}
 	
 	/*Usado para auxiliar no construtor da classe robo

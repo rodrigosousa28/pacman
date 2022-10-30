@@ -4,7 +4,8 @@ public class Robo extends Personagem{
 	private final String HEROI;
 
 	public Robo(String color, Matriz matriz) {
-		super(matriz);	
+		super(matriz);
+		matriz.setRobo(this);
 		this.x = 5;
 		this.y = 5;
 		
@@ -42,6 +43,10 @@ public class Robo extends Personagem{
 		}
 		color = ANSI_COLOR + emoji + ANSI_RESET;
 		this.HEROI = color;
+		
+		setY(y);
+		setX(x);
+		
 		matriz.setPosicao(x, y, this.HEROI);
 	}
 
@@ -77,6 +82,8 @@ public class Robo extends Personagem{
 		
 		matriz.setPosicao(linhaRobo, colunaRobo, getHeroi());
 		
+		matriz.getObstaculo1().mover(comando);
+		matriz.getObstaculo2().mover(comando);
 	}
 	
 	public void mover(int comando) {
