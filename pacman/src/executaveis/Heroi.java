@@ -59,49 +59,40 @@ public class Heroi extends Personagem{
 	}
 	
 	public void mover(String comando) {
-		super.mover(comando);
 		
 		int proximaLinha = getY();
 		int proximaColuna = getX();
-
+		
 		if(comando.equalsIgnoreCase("up")) {
 			proximaLinha = getY() - 1;
-			try {
-				Validar.movimento(proximaLinha, proximaColuna);
-				setY(proximaLinha);
-			} catch (MovimentoInvalidoException m) {
-				System.out.println(m.getMessage());
-			}
+			Validar.movimento(this, proximaLinha, proximaColuna);
+			super.mover(comando);
+			setY(proximaLinha);
 		}else if(comando.equalsIgnoreCase("down")) {
 			proximaLinha = getY() + 1;
-			try {
-				Validar.movimento(proximaLinha, proximaColuna);
-				setY(proximaLinha);
-			} catch (MovimentoInvalidoException m) {
-				System.out.println(m.getMessage());
-			}
+			Validar.movimento(this, proximaLinha, proximaColuna);
+			super.mover(comando);
+			setY(proximaLinha);
 		}else if(comando.equalsIgnoreCase("right")) {
 			proximaColuna = getX() + 1;
-			try {
-				Validar.movimento(proximaLinha, proximaColuna);
-				setX(proximaColuna);
-			} catch (MovimentoInvalidoException m) {
-				System.out.println(m.getMessage());
-			}
+			Validar.movimento(this, proximaLinha, proximaColuna);
+			super.mover(comando);
+			setX(proximaColuna);
 		}else if(comando.equalsIgnoreCase("left")) {
 			proximaColuna = getX() - 1;
-			try {
-				Validar.movimento(proximaLinha, proximaColuna);
-				setX(proximaColuna);
-			} catch (MovimentoInvalidoException m) {
-				System.out.println(m.getMessage());
-			}
+			Validar.movimento(this, proximaLinha, proximaColuna);
+			super.mover(comando);
+			setX(proximaColuna);
 		}
 		
 		matriz.setPosicao(getY(), getX(), getHeroi());
 		
-		for(Obstaculo obstaculo: matriz.getObstaculos()) {
-			obstaculo.mover(comando);
+		//Os obstáculos só irão se mover se a dificuldade for
+		//no mínimo 2
+		if(matriz.getDificuldade() > 1) {
+			for(Obstaculo obstaculo: matriz.getObstaculos()) {
+				obstaculo.mover(comando);
+			}			
 		}
 	}
 	
