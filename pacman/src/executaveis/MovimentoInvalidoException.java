@@ -1,5 +1,6 @@
 package executaveis;
 
+@SuppressWarnings("serial")
 public class MovimentoInvalidoException extends RuntimeException{
 	String nomeVariavel;
 

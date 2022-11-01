@@ -82,7 +82,6 @@ public class Matriz {
  	instanciar o Robô, pois o robô vai ter como base
 	o modo de jogo para ser definido qual personagem
 	vai representá-lo*/
-	@SuppressWarnings("unused")
 	public void setModoDeJogo(int modo, int dificuldade) {
 
 		Random random = new Random();
@@ -106,10 +105,14 @@ public class Matriz {
 			break;
 		case 4:
 			ANSI_COLOR = "\u001B[33m";
-			objetivo = ANSI_COLOR + "🧀" + ANSI_RESET;;
-			//Usado para auxiliar no método mover, do robô
+			objetivo = ANSI_COLOR + "🧀" + ANSI_RESET;
 		}
 		setPosicao(linha, coluna, objetivo);
+		
+		//Serão usados para ajudar no
+		//tratamento de exceções dos obstáculos
+		setLinhaObjetivo(linha);
+		setColunaObjetivo(linha);
 		modoDeJogo = modo;
 		
 		/*Sempre vai colocar 2 obstáculos
@@ -153,10 +156,15 @@ public class Matriz {
 		return dificuldade;
 	}
 	
-	/*Preciso modificar algumas coisas nessa classe Matriz
-	para dar usabilidade a esses métodos
-	Principalmente no tratamento de erros dos movimentos dos
-	Obstáculos*/
+	public void setColunaObjetivo(int colunaObjetivo) {
+		this.colunaObjetivo = colunaObjetivo;
+	}
+	public void setLinhaObjetivo(int linhaObjetivo) {
+		this.linhaObjetivo = linhaObjetivo;
+	}
+	
+	/*Usados para auxiliar na criação da
+	 exceção para o movimento dos vilões*/
 	public int getColunaAlimento() {
 		return colunaObjetivo;
 	}
