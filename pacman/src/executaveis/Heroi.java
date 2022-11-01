@@ -1,5 +1,7 @@
 package executaveis;
 
+import excecoes.*;
+
 public class Heroi extends Personagem{
 	private final String HEROI;
 

@@ -1,5 +1,7 @@
 package executaveis;
 
+import excecoes.*;
+
 public class Teste {
 
 	public static void main(String[] args) {

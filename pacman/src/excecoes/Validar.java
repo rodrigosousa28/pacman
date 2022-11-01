@@ -1,4 +1,6 @@
-package executaveis;
+package excecoes;
+
+import executaveis.Heroi;
 
 public class Validar {
 
