@@ -4,6 +4,7 @@ public abstract class Personagem {
 
 	protected int x;
 	protected int y;
+	protected String nome;
 	@SuppressWarnings("unused")
 	protected Matriz matriz;
 

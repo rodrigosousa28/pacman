@@ -14,7 +14,8 @@ public class Teste {
 		System.out.println(m);
 		r.mover("left");
 		System.out.println(m);
-		r.mover("down");
+		r.mover("left");
 		System.out.println(m);
+		r.mover("down");
 	}
 }

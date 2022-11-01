@@ -66,7 +66,9 @@ public class Matriz {
 		return robo;
 	}
 	
-	
+	public String[][] getCampo(){
+		return campo;
+	}
 	
 	
 	//NÃO usar no metodo main

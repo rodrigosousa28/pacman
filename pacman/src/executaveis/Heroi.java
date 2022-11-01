@@ -30,15 +30,19 @@ public class Heroi extends Personagem{
 		switch(matriz.getModoDeJogo()) {
 		case 1:
 			emoji = "👨‍🌾 ";
+			super.nome = "Fazendeiro";
 			break;
 		case 2:
 			emoji = "🤖 ";
+			super.nome = "Robô";
 			break;
 		case 3:
 			emoji = "👮 ";
+			super.nome = "Policial";
 			break;
 		case 4:
 			emoji = "🐀 ";
+			super.nome = "Rato";
 			break;
 		}
 		color = ANSI_COLOR + emoji + ANSI_RESET;
@@ -56,15 +60,42 @@ public class Heroi extends Personagem{
 	
 	public void mover(String comando) {
 		super.mover(comando);
+		
+		int proximaLinha = getY();
+		int proximaColuna = getX();
 
 		if(comando.equalsIgnoreCase("up")) {
-			setY(getY() - 1);
+			proximaLinha = getY() - 1;
+			try {
+				Validar.movimento(proximaLinha, proximaColuna);
+				setY(proximaLinha);
+			} catch (MovimentoInvalidoException m) {
+				System.out.println(m.getMessage());
+			}
 		}else if(comando.equalsIgnoreCase("down")) {
-			setY(getY() + 1);
+			proximaLinha = getY() + 1;
+			try {
+				Validar.movimento(proximaLinha, proximaColuna);
+				setY(proximaLinha);
+			} catch (MovimentoInvalidoException m) {
+				System.out.println(m.getMessage());
+			}
 		}else if(comando.equalsIgnoreCase("right")) {
-			setX(this.getX() + 1);
+			proximaColuna = getX() + 1;
+			try {
+				Validar.movimento(proximaLinha, proximaColuna);
+				setX(proximaColuna);
+			} catch (MovimentoInvalidoException m) {
+				System.out.println(m.getMessage());
+			}
 		}else if(comando.equalsIgnoreCase("left")) {
-			setX(this.getX() - 1);
+			proximaColuna = getX() - 1;
+			try {
+				Validar.movimento(proximaLinha, proximaColuna);
+				setX(proximaColuna);
+			} catch (MovimentoInvalidoException m) {
+				System.out.println(m.getMessage());
+			}
 		}
 		
 		matriz.setPosicao(getY(), getX(), getHeroi());
