@@ -5,7 +5,7 @@ public class Teste {
 	public static void main(String[] args) {
 		
 		Matriz m = new Matriz();
-		m.setModoDeJogo(2, 8, 4);
+		m.setModoDeJogo(3, 1);
 		Robo r = new Robo("preto", m);
 		System.out.println(m);
 		r.mover("up");

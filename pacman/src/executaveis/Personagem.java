@@ -27,7 +27,19 @@ public abstract class Personagem {
 		this.y = y;
 	}
 	
-	public abstract void mover(String comando);
+	//Optei por colocar essa parte do código aqui na super classe
+	//porque é comum tanto ao Robô, como ao Obstáculo
+	public void mover(String comando) {
+		if(getY() != 5 && getX() != 5) {
+			matriz.setPosicao(getY(), getX(), "   ");
+		}else if(getY() == 5 && getX() == 5) {
+			matriz.setPosicao(getY(), getX(), "+ ");						
+		}else if(getY() == 5) {
+			matriz.setPosicao(getY(), getX(), "—— ");						
+		}else if(getX() == 5) {
+			matriz.setPosicao(getY(), getX(), "|  ");									
+		}
+	}
 	
 	public abstract void mover(int comando);
 }

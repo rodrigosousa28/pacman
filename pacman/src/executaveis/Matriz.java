@@ -1,5 +1,8 @@
 package executaveis;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Matriz {
 
 	private final int linhas;
@@ -9,9 +12,9 @@ public class Matriz {
 	private int linhaObjetivo;
 	private int colunaObjetivo;
 	private int modoDeJogo;
+	private int dificuldade;
 	private Robo robo;
-	private Obstaculo o1;
-	private Obstaculo o2;
+	private ArrayList<Obstaculo> obstaculos;
 
 	/*Construtor da classe matriz sempre terá 11 linhas
 	 e 11 colunas, aí a área usável pelo robô vai ser
@@ -52,20 +55,19 @@ public class Matriz {
 		return m;
 	}
 	
+	//Usado apenas no construtor da classe Robô
+	//e não no método main
 	public void setRobo(Robo robo) {
 		this.robo = robo;
 	}
 	
+	//Usado para auxiliar na classe obstáculo
 	public Robo getRobo() {
 		return robo;
 	}
 	
-	public Obstaculo getObstaculo1() {
-		return o1;
-	}
-	public Obstaculo getObstaculo2() {
-		return o2;
-	}
+	
+	
 	
 	//NÃO usar no metodo main
 	public void setPosicao(int linha, int coluna, String s) {
@@ -79,10 +81,12 @@ public class Matriz {
 	o modo de jogo para ser definido qual personagem
 	vai representá-lo*/
 	@SuppressWarnings("unused")
-	public void setModoDeJogo(int linha, int coluna, int modo) {
-		/*Perguntar pro PH se pode deixar o objetivo 
-		ficar numa posição gerada aleatoriamente, assim como
-		os obstáculos*/
+	public void setModoDeJogo(int modo, int dificuldade) {
+
+		Random random = new Random();
+		int linha = random.nextInt(1, 6);
+		int coluna = random.nextInt(5, 11);
+		
 		final String ANSI_RESET = "\u001B[0m";
 		String ANSI_COLOR = "\u001B[31m";
 		switch(modo) {
@@ -101,6 +105,7 @@ public class Matriz {
 		case 4:
 			ANSI_COLOR = "\u001B[33m";
 			objetivo = ANSI_COLOR + "🧀" + ANSI_RESET;;
+			//Usado para auxiliar no método mover, do robô
 		}
 		setPosicao(linha, coluna, objetivo);
 		modoDeJogo = modo;
@@ -108,8 +113,32 @@ public class Matriz {
 		/*Sempre vai colocar 2 obstáculos
 		Caso tenha niveis de dificuldade,
 		A quantidade pode aumentar*/
-		o1 = new Obstaculo(this);
-		o2 = new Obstaculo(this);
+		//o1 = new Obstaculo(this);
+		//o2 = new Obstaculo(this);
+		
+		int quantidadeObstaculos = 0;
+		
+		switch(dificuldade) {
+		case 1:
+			quantidadeObstaculos = 3;
+			break;
+		case 2:
+			quantidadeObstaculos = 4;
+			break;
+		case 3:
+			quantidadeObstaculos = 7;
+			break;
+		}
+		obstaculos = new ArrayList<>();
+		for(int i = 0; i < quantidadeObstaculos; i++) {
+			obstaculos.add(new Obstaculo(this));
+		}
+		this.dificuldade = dificuldade;
+	}
+	
+	//Usado para auxiliar no método mover, do robô
+	public ArrayList<Obstaculo> getObstaculos() {
+		return obstaculos;
 	}
 	
 	/*Usado para auxiliar no construtor da classe robo
@@ -118,8 +147,14 @@ public class Matriz {
 		return modoDeJogo;
 	}
 	
+	public int getDificuldade() {
+		return dificuldade;
+	}
+	
 	/*Preciso modificar algumas coisas nessa classe Matriz
-	para dar usabilidade a esses métodos*/
+	para dar usabilidade a esses métodos
+	Principalmente no tratamento de erros dos movimentos dos
+	Obstáculos*/
 	public int getColunaAlimento() {
 		return colunaObjetivo;
 	}

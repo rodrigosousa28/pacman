@@ -55,19 +55,8 @@ public class Robo extends Personagem{
 	}
 	
 	public void mover(String comando) {
-		int linhaRobo = getY();
-		int colunaRobo = getX();
-		
-		if(linhaRobo != 5 && colunaRobo != 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "   ");			
-		}else if(linhaRobo == 5 && colunaRobo == 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "+ ");						
-		}else if(linhaRobo == 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "—— ");						
-		}else if(colunaRobo == 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "|  ");									
-		}
-		
+		super.mover(comando);
+
 		if(comando.equalsIgnoreCase("up")) {
 			setY(getY() - 1);
 		}else if(comando.equalsIgnoreCase("down")) {
@@ -77,15 +66,18 @@ public class Robo extends Personagem{
 		}else if(comando.equalsIgnoreCase("left")) {
 			setX(this.getX() - 1);
 		}
-		linhaRobo = getY();
-		colunaRobo = getX();
 		
-		matriz.setPosicao(linhaRobo, colunaRobo, getHeroi());
+		matriz.setPosicao(getY(), getX(), getHeroi());
 		
-		matriz.getObstaculo1().mover(comando);
-		matriz.getObstaculo2().mover(comando);
+		/*for(Obstaculo obstaculo: matriz.getObstaculos()) {
+			obstaculo.mover(comando);
+		}*/
+		for(Obstaculo obstaculo: matriz.getObstaculos()) {
+			obstaculo.mover(comando);
+		}
 	}
 	
+	//Método precisa ser concluído
 	public void mover(int comando) {
 		int linhaRobo = getY();
 		int colunaRobo = getX();
@@ -105,14 +97,12 @@ public class Robo extends Personagem{
 		}else if(comando == 2) {
 			setY(getY() + 1);
 		}else if(comando == 3) {
-			setX(this.getX() + 1);
+			setX(getX() + 1);
 		}else if(comando == 4) {
-			setX(this.getX() - 1);
+			setX(getX() - 1);
 		}
-		linhaRobo = getY();
-		colunaRobo = getX();
 		
-		matriz.setPosicao(linhaRobo, colunaRobo, getHeroi());
+		matriz.setPosicao(getY(), getX(), getHeroi());
 		
 	}
 

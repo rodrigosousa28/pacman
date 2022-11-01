@@ -28,7 +28,7 @@ public class Obstaculo extends Personagem{
 			OBSTACULO = ANSI_COLOR + "🧟" + ANSI_RESET;
 			break;
 		case 4:
-			OBSTACULO = "🐈";
+			OBSTACULO = "🐈 ";
 			break;
 		}
 		setY(linhaObstaculo);
@@ -44,34 +44,23 @@ public class Obstaculo extends Personagem{
 	mas levando em consideração o contexto
 	Falta corrigir alguns bugs*/
 	public void mover(String comando) {
-		int linhaObstaculo = getY();
-		int colunaObstaculo = getX();
 		
-		if(linhaObstaculo != 5 && colunaObstaculo != 5) {
-			matriz.setPosicao(linhaObstaculo, colunaObstaculo, "   ");
-		}else if(linhaObstaculo == 5 && colunaObstaculo == 5) {
-			matriz.setPosicao(linhaObstaculo, colunaObstaculo, "+ ");						
-		}else if(linhaObstaculo == 5) {
-			matriz.setPosicao(linhaObstaculo, colunaObstaculo, "—— ");						
-		}else if(colunaObstaculo == 5) {
-			matriz.setPosicao(linhaObstaculo, colunaObstaculo, "|  ");									
-		}
-		
+		super.mover(comando);
 		if(comando.equalsIgnoreCase("up")) {
 			//Quer dizer que o robô está acima
 			if(matriz.getRobo().getY() < this.getY()) {
-				this.setY(linhaObstaculo - 1);
+				this.setY(getY() - 1);
 			//Quer dizer que o robô está abaixo
 			}else {
-				this.setY(linhaObstaculo + 1);				
+				this.setY(getY() + 1);				
 			}
 		}else if(comando.equalsIgnoreCase("down")) {
 			//Quer dizer que o robô está acima
 			if(matriz.getRobo().getY() < this.getY()) {
-				this.setY(linhaObstaculo - 1);
+				this.setY(getY() - 1);
 			//Quer dizer que o robô está abaixo
 			}else {
-				this.setY(linhaObstaculo + 1);				
+				this.setY(getY() + 1);				
 			}
 		}else if(comando.equalsIgnoreCase("right")) {
 			//Quer dizer que o robô está a direita
@@ -92,11 +81,10 @@ public class Obstaculo extends Personagem{
 			
 		}
 		
-		linhaObstaculo = getY();
-		colunaObstaculo = getX();
-		matriz.setPosicao(linhaObstaculo, colunaObstaculo, OBSTACULO);
+		matriz.setPosicao(getY(), getX(), OBSTACULO);
 	}
 
+	//Implementar método
 	public void mover(int comando) {
 		
 	}
