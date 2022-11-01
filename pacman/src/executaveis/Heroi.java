@@ -1,9 +1,9 @@
 package executaveis;
 
-public class Robo extends Personagem{
+public class Heroi extends Personagem{
 	private final String HEROI;
 
-	public Robo(String color, Matriz matriz) {
+	public Heroi(String color, Matriz matriz) {
 		super(matriz);
 		matriz.setRobo(this);
 		this.x = 5;
@@ -69,9 +69,6 @@ public class Robo extends Personagem{
 		
 		matriz.setPosicao(getY(), getX(), getHeroi());
 		
-		/*for(Obstaculo obstaculo: matriz.getObstaculos()) {
-			obstaculo.mover(comando);
-		}*/
 		for(Obstaculo obstaculo: matriz.getObstaculos()) {
 			obstaculo.mover(comando);
 		}

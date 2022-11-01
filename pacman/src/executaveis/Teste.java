@@ -6,7 +6,7 @@ public class Teste {
 		
 		Matriz m = new Matriz();
 		m.setModoDeJogo(3, 1);
-		Robo r = new Robo("preto", m);
+		Heroi r = new Heroi("preto", m);
 		System.out.println(m);
 		r.mover("up");
 		System.out.println(m);

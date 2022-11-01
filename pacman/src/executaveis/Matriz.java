@@ -13,7 +13,7 @@ public class Matriz {
 	private int colunaObjetivo;
 	private int modoDeJogo;
 	private int dificuldade;
-	private Robo robo;
+	private Heroi robo;
 	private ArrayList<Obstaculo> obstaculos;
 
 	/*Construtor da classe matriz sempre terá 11 linhas
@@ -57,12 +57,12 @@ public class Matriz {
 	
 	//Usado apenas no construtor da classe Robô
 	//e não no método main
-	public void setRobo(Robo robo) {
+	public void setRobo(Heroi robo) {
 		this.robo = robo;
 	}
 	
 	//Usado para auxiliar na classe obstáculo
-	public Robo getRobo() {
+	public Heroi getRobo() {
 		return robo;
 	}
 	
