@@ -9,6 +9,7 @@ import excecoes.Validar;
 
 public class Heroi extends Personagem{
 	private final String HEROI;
+	private String emoji;
 
 	public Heroi(String color, Matriz matriz) {
 		super(matriz);
@@ -18,7 +19,6 @@ public class Heroi extends Personagem{
 		
 		final String ANSI_RESET = "\u001B[0m";
 		String ANSI_COLOR = "";
-		String emoji = "";
 		
 		if(color.equalsIgnoreCase("vermelho")) {
 			ANSI_COLOR = "\u001B[31m";

@@ -33,7 +33,7 @@ public class Matriz {
 					campo[i][j] = "—— ";
 				}
 				else if(j == 5) {
-					campo[i][j] = "|";
+					campo[i][j] = "|  ";
 				}else {
 					campo[i][j] = "   ";
 				}
