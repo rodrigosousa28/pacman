@@ -76,10 +76,9 @@ public class Matriz {
 		campo[linha][coluna] = s;
 	}
 	
-	/*Usar no método main, somente quando o usuário
-	Informar onde irá se localizar o objetivo, deve-se usar
-	imediatamente após instanciar a matriz, e só depois
- 	instanciar o Robô, pois o robô vai ter como base
+	/*Usar no método main imediatamente após instanciar 
+	a matriz, e só depois instanciar o Robô
+	pois o robô vai ter como base
 	o modo de jogo para ser definido qual personagem
 	vai representá-lo*/
 	public void setModoDeJogo(int modo, int dificuldade) {
@@ -93,19 +92,19 @@ public class Matriz {
 		switch(modo) {
 		case 1:
 			ANSI_COLOR = "\u001B[33m";
-			objetivo = ANSI_COLOR + "🌽" + ANSI_RESET;
+			objetivo = ANSI_COLOR + "🌽 " + ANSI_RESET;
 			break;
 		case 2:
 			ANSI_COLOR = "\u001B[31m";
-			objetivo = ANSI_COLOR + "❤" + ANSI_RESET;
+			objetivo = ANSI_COLOR + "❤ " + ANSI_RESET;
 			break;
 		case 3:
 			ANSI_COLOR = "\u001B[32m";
-			objetivo = "🦹‍♂️";
+			objetivo = "🦹‍♂️ ";
 			break;
 		case 4:
 			ANSI_COLOR = "\u001B[33m";
-			objetivo = ANSI_COLOR + "🧀" + ANSI_RESET;
+			objetivo = ANSI_COLOR + "🧀 " + ANSI_RESET;
 		}
 		setPosicao(linha, coluna, objetivo);
 		
@@ -165,11 +164,11 @@ public class Matriz {
 	
 	/*Usados para auxiliar na criação da
 	 exceção para o movimento dos vilões*/
-	public int getColunaAlimento() {
+	public int getColunaObjetivo() {
 		return colunaObjetivo;
 	}
 		
-	public int getLinhaAlimento() {
+	public int getLinhaObjetivo() {
 		return linhaObjetivo;
 	}
 		

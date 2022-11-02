@@ -41,7 +41,7 @@ public abstract class Personagem {
 		}else if(getY() == 5) {
 			matriz.setPosicao(getY(), getX(), "—— ");						
 		}else if(getX() == 5) {
-			matriz.setPosicao(getY(), getX(), "|  ");									
+			matriz.setPosicao(getY(), getX(), "|  ");
 		}
 	}
 	

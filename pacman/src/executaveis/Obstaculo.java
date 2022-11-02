@@ -12,6 +12,9 @@ public class Obstaculo extends Personagem{
 		int linhaObstaculo = random.nextInt(1, 6);
 		int colunaObstaculo = random.nextInt(5, 11);
 		
+		setY(linhaObstaculo);
+		setX(colunaObstaculo);
+		
 		final String ANSI_COLOR;
 		final String ANSI_RESET = "\u001B[0m";
 		
@@ -31,8 +34,6 @@ public class Obstaculo extends Personagem{
 			OBSTACULO = "🐈 ";
 			break;
 		}
-		setY(linhaObstaculo);
-		setX(colunaObstaculo);
 		matriz.setPosicao(linhaObstaculo, colunaObstaculo, OBSTACULO);
 	}
 	
@@ -64,6 +65,7 @@ public class Obstaculo extends Personagem{
 			}
 		}else if(comando.equalsIgnoreCase("right")) {
 			//Quer dizer que o robô está a direita
+			System.out.println("ERRO");
 			if(matriz.getRobo().getX() > this.getX()) {
 				this.setX(getX() + 1);
 			//Quer dizer que o robô está a esquerda ou na mesma coluna

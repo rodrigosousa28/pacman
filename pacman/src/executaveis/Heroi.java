@@ -1,6 +1,11 @@
 package executaveis;
 
-import excecoes.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Random;
+
+import excecoes.Validar;
 
 public class Heroi extends Personagem{
 	private final String HEROI;
@@ -68,22 +73,22 @@ public class Heroi extends Personagem{
 		if(comando.equalsIgnoreCase("up")) {
 			proximaLinha = getY() - 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover(comando);
+			super.mover("up");
 			setY(proximaLinha);
 		}else if(comando.equalsIgnoreCase("down")) {
 			proximaLinha = getY() + 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover(comando);
+			super.mover("down");
 			setY(proximaLinha);
 		}else if(comando.equalsIgnoreCase("right")) {
 			proximaColuna = getX() + 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover(comando);
+			super.mover("right");
 			setX(proximaColuna);
 		}else if(comando.equalsIgnoreCase("left")) {
 			proximaColuna = getX() - 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover(comando);
+			super.mover("left");
 			setX(proximaColuna);
 		}
 		
@@ -125,6 +130,26 @@ public class Heroi extends Personagem{
 		
 		matriz.setPosicao(getY(), getX(), getHeroi());
 		
+	}
+	
+	//Usado somente na classe main que os robôs se moverem aleatoriamente
+	public void mover() {
+		Random random = new Random();
+		int comando = random.nextInt(1, 5);
+		Map<Integer, String> possibilidades;
+		
+		possibilidades = new HashMap<>();
+		possibilidades.put(1, "up");
+		possibilidades.put(2, "down");
+		possibilidades.put(3, "right");
+		possibilidades.put(4, "left");
+		
+		for(Entry<Integer, String> possibilidade: possibilidades.entrySet()){
+			if(possibilidade.getKey() == comando) {
+				this.mover(possibilidade.getValue());
+				break;
+			}
+		}
 	}
 
 }
