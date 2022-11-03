@@ -114,28 +114,24 @@ public class Matriz {
 		setColunaObjetivo(linha);
 		modoDeJogo = modo;
 		
-		/*Sempre vai colocar 2 obstáculos
-		Caso tenha niveis de dificuldade,
-		A quantidade pode aumentar*/
-		//o1 = new Obstaculo(this);
-		//o2 = new Obstaculo(this);
-		
 		int quantidadeObstaculos = 0;
 		
 		switch(dificuldade) {
 		case 1:
-			quantidadeObstaculos = 3;
+			quantidadeObstaculos = 2;
 			break;
 		case 2:
-			quantidadeObstaculos = 4;
+			quantidadeObstaculos = 3;
 			break;
 		case 3:
-			quantidadeObstaculos = 7;
+			quantidadeObstaculos = 5;
 			break;
 		}
 		obstaculos = new ArrayList<>();
 		for(int i = 0; i < quantidadeObstaculos; i++) {
-			obstaculos.add(new Obstaculo(this));
+			Obstaculo obstaculo = new Obstaculo();
+			obstaculo.setMatriz(this);
+			obstaculos.add(obstaculo);
 		}
 		this.dificuldade = dificuldade;
 	}

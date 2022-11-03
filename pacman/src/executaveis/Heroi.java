@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
+import excecoes.GameOverException;
 import excecoes.Validar;
 
 public class Heroi extends Personagem{
@@ -69,26 +70,31 @@ public class Heroi extends Personagem{
 		
 		int proximaLinha = getY();
 		int proximaColuna = getX();
-		
+		/*for(Obstaculo obstaculo: matriz.getObstaculos()) {
+			if(obstaculo.getX() == getX() && obstaculo.getY() == getY()) {
+				System.out.println(matriz);
+				throw new GameOverException();
+			}
+		}*/
 		if(comando.equalsIgnoreCase("up")) {
 			proximaLinha = getY() - 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover("up");
+			super.mover();
 			setY(proximaLinha);
 		}else if(comando.equalsIgnoreCase("down")) {
 			proximaLinha = getY() + 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover("down");
+			super.mover();
 			setY(proximaLinha);
 		}else if(comando.equalsIgnoreCase("right")) {
 			proximaColuna = getX() + 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover("right");
+			super.mover();
 			setX(proximaColuna);
 		}else if(comando.equalsIgnoreCase("left")) {
 			proximaColuna = getX() - 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
-			super.mover("left");
+			super.mover();
 			setX(proximaColuna);
 		}
 		
@@ -134,6 +140,7 @@ public class Heroi extends Personagem{
 	
 	//Usado somente na classe main que os robôs se moverem aleatoriamente
 	public void mover() {
+		super.mover();
 		Random random = new Random();
 		int comando = random.nextInt(1, 5);
 		Map<Integer, String> possibilidades;

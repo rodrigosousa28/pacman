@@ -11,8 +11,14 @@ public abstract class Personagem {
 		this.matriz = matriz;
 	}
 	
+	protected Personagem() {}
+
 	public String getNome() {
 		return nome;
+	}
+	
+	public Matriz getMatriz() {
+		return matriz;
 	}
 
 	public int getX() {
@@ -33,7 +39,7 @@ public abstract class Personagem {
 	
 	//Optei por colocar essa parte do código aqui na super classe
 	//porque é comum tanto ao Robô, como ao Obstáculo
-	public void mover(String comando) {
+	public void mover() {
 		if(getY() != 5 && getX() != 5) {
 			matriz.setPosicao(getY(), getX(), "   ");
 		}else if(getY() == 5 && getX() == 5) {

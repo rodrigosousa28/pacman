@@ -9,7 +9,7 @@ public class MovimentoInvalidoException extends RuntimeException{
 	}
 
 	public String getMessage() {
-		return String.format("O movimento do %s foi inválido. Zona de perigo",
+		return String.format("O movimento do %s foi inválido!",
 				nomeVariavel);
 	}
 }

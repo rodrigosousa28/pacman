@@ -128,22 +128,5 @@ public class HeroiInteligente extends Heroi{
 		}catch(MovimentoInvalidoException m) {
 			super.mover(this.verificarEspacoLivre(comando));
 		}
-		
 	}
-	/*
-	boolean condicao1 = matriz.getCampo()[proximaLinha][proximaColuna]
-				.equalsIgnoreCase("   ");
-		
-	boolean condicao2 = matriz.getCampo()[proximaLinha][proximaColuna]
-				.equalsIgnoreCase("+ ");
-		
-	boolean condicao3 = matriz.getCampo()[proximaLinha][proximaColuna]
-				.equalsIgnoreCase("—— ");
-		
-	boolean condicao4 = matriz.getCampo()[proximaLinha][proximaColuna]
-				.equalsIgnoreCase("| ");
-		
-	if(condicao1 || condicao2 || condicao3 || condicao4)
-			System.out.println("MOVIMENTO VÁLIDO");
-	*/
 }
