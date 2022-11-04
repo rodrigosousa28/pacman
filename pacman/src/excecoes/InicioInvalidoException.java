@@ -1,5 +1,6 @@
 package excecoes;
 
+@SuppressWarnings("serial")
 public class InicioInvalidoException extends RuntimeException{
 	
 	public InicioInvalidoException() {}

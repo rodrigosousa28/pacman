@@ -9,7 +9,7 @@ import excecoes.Validar;
 
 public class Obstaculo extends Personagem{
 	
-	private String OBSTACULO;
+	private String obstaculo;
 
 	public Obstaculo(Matriz matriz) {
 		super(matriz);
@@ -41,24 +41,24 @@ public class Obstaculo extends Personagem{
 		switch(matriz.getModoDeJogo()) {
 		case 1:
 			ANSI_COLOR = "\u001B[36m";
-			OBSTACULO = ANSI_COLOR + "🐺 " + ANSI_RESET;
+			obstaculo = ANSI_COLOR + "🐺 " + ANSI_RESET;
 			nome = "Lobo";
 			break;
 		case 2:
-			OBSTACULO = "🧙‍♀️‍ ";
+			obstaculo = "🧙‍♀️‍ ";
 			nome = "Bruxa";
 			break;
 		case 3:
 			ANSI_COLOR = "\u001B[32m";
-			OBSTACULO = ANSI_COLOR + "🧟 " + ANSI_RESET;
+			obstaculo = ANSI_COLOR + "🧟 " + ANSI_RESET;
 			nome = "Zumbi";
 			break;
 		case 4:
-			OBSTACULO = "🐈 ";
+			obstaculo = "🐈 ";
 			nome = "Gato";
 			break;
 		}
-		matriz.setPosicao(getY(), getX(), OBSTACULO);
+		matriz.setPosicao(getY(), getX(), obstaculo);
 	}
 	
 	/*O parâmetro passado aqui será o mesmo que o que foi
@@ -105,16 +105,31 @@ public class Obstaculo extends Personagem{
 					this.setX(getX() - 1);
 				}	
 			}	
-			matriz.setPosicao(getY(), getX(), OBSTACULO);
+			matriz.setPosicao(getY(), getX(), obstaculo);
 		}catch(MovimentoInvalidoException e) {}
 		if(matriz.getRobo().getX() == this.getX() && matriz.getRobo().getY() == this.getY()) {
 			throw new GameOverException();
 		}
 	}
 
-	//Implementar método
 	public void mover(int comando) {
-		
+		switch(comando) {
+		case 1:
+			this.mover("up");
+			break;
+		case 2:
+			this.mover("down");
+			break;
+		case 3:
+			this.mover("right");
+			break;
+		case 4:
+			this.mover("left");
+		}	
+	}
+
+	public String getObstaculo() {
+		return obstaculo;
 	}
 	
 	

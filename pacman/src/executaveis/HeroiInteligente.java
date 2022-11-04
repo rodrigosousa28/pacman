@@ -23,12 +23,13 @@ public class HeroiInteligente extends Heroi{
 		boolean condicao3 = matriz.getCampo()[linhaAtual][colunaAtual]
 				.equalsIgnoreCase("—— ");
 		boolean condicao4 = matriz.getCampo()[linhaAtual][colunaAtual]
-				.equalsIgnoreCase("| ");
+				.equalsIgnoreCase("|  ");
+		
 		
 		boolean condicao = condicao1 || condicao2 || condicao3 || condicao4;
 		return condicao;
 	}
-	
+
 	private String verificarEspacoLivre(String comando) {
 		int livresNaDireita = 0;
 		int livresNaEsquerda = 0;
@@ -37,20 +38,6 @@ public class HeroiInteligente extends Heroi{
 		
 		int linhaAtual = getY();
 		int colunaAtual = getX();
-		
-		if (comando.equalsIgnoreCase("up")) {
-			linhaAtual = getY() + 1;
-			setY(linhaAtual);
-		}else if (comando.equalsIgnoreCase("down")) {
-			linhaAtual--;
-			setY(linhaAtual);
-		}else if (comando.equalsIgnoreCase("right")) {
-			colunaAtual--;
-			setY(colunaAtual);
-		}else if (comando.equalsIgnoreCase("left")) {
-			colunaAtual++;
-			setY(colunaAtual);
-		}
 		
 		//Verificando quantos espaços livres tem abaixo
 		linhaAtual = getY() + 1;
@@ -66,7 +53,7 @@ public class HeroiInteligente extends Heroi{
 		
 		//Verificando quantos espaços livres tem acima
 		linhaAtual = getY() - 1;
-		while(linhaAtual > 0) {
+		while(linhaAtual >= 0) {
 			if(condicao(linhaAtual, colunaAtual)) {
 				livresAcima++;
 				linhaAtual--;
@@ -121,12 +108,12 @@ public class HeroiInteligente extends Heroi{
 	}
 
 	public void mover(String comando) {
+		String movimentoAlternativo;
 		try {
 			super.mover(comando);
-		}catch(ArrayIndexOutOfBoundsException e) {
-			super.mover(this.verificarEspacoLivre(comando));
-		}catch(MovimentoInvalidoException m) {
-			super.mover(this.verificarEspacoLivre(comando));
+		} catch (MovimentoInvalidoException e) {
+			movimentoAlternativo = verificarEspacoLivre(comando);
+			super.mover(movimentoAlternativo);
 		}
 	}
 }

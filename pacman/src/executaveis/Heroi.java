@@ -66,21 +66,18 @@ public class Heroi extends Personagem{
 		return HEROI;
 	}
 	
+	
 	public void mover(String comando) {
 		
 		int proximaLinha = getY();
 		int proximaColuna = getX();
-		/*for(Obstaculo obstaculo: matriz.getObstaculos()) {
-			if(obstaculo.getX() == getX() && obstaculo.getY() == getY()) {
-				System.out.println(matriz);
-				throw new GameOverException();
-			}
-		}*/
+				
 		if(comando.equalsIgnoreCase("up")) {
 			proximaLinha = getY() - 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
 			super.mover();
 			setY(proximaLinha);
+			proximaLinha++;
 		}else if(comando.equalsIgnoreCase("down")) {
 			proximaLinha = getY() + 1;
 			Validar.movimento(this, proximaLinha, proximaColuna);
@@ -99,6 +96,12 @@ public class Heroi extends Personagem{
 		}
 		
 		matriz.setPosicao(getY(), getX(), getHeroi());
+		for(Obstaculo obstaculo: matriz.getObstaculos()) {
+			if(obstaculo.getX() == getX() && obstaculo.getY() == getY()) {
+				matriz.setPosicao(getY(), getX(), obstaculo.getObstaculo());
+				throw new GameOverException();
+			}
+		}
 		
 		//Os obstáculos só irão se mover se a dificuldade for
 		//no mínimo 2
@@ -109,32 +112,20 @@ public class Heroi extends Personagem{
 		}
 	}
 	
-	//Método precisa ser concluído
 	public void mover(int comando) {
-		int linhaRobo = getY();
-		int colunaRobo = getX();
-		
-		if(linhaRobo != 5 && colunaRobo != 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "   ");			
-		}else if(linhaRobo == 5 && colunaRobo == 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "+ ");						
-		}else if(linhaRobo == 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "—— ");						
-		}else if(colunaRobo == 5) {
-			matriz.setPosicao(linhaRobo, colunaRobo, "|  ");									
+		switch(comando) {
+		case 1:
+			this.mover("up");
+			break;
+		case 2:
+			this.mover("down");
+			break;
+		case 3:
+			this.mover("right");
+			break;
+		case 4:
+			this.mover("left");
 		}
-		
-		if(comando == 1) {
-			setY(getY() - 1);
-		}else if(comando == 2) {
-			setY(getY() + 1);
-		}else if(comando == 3) {
-			setX(getX() + 1);
-		}else if(comando == 4) {
-			setX(getX() - 1);
-		}
-		
-		matriz.setPosicao(getY(), getX(), getHeroi());
 		
 	}
 	
