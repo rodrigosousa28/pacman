@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import excecoes.GameOverException;
+import excecoes.MovimentoInvalidoException;
 
 //import excecoes.GameOverException;
 
@@ -41,6 +42,9 @@ public class Teste {
 				System.out.println(m);
 				System.out.println(e.getMessage());
 				break;
+			}catch(MovimentoInvalidoException mov) {
+				System.out.println("INVALIDO");
+				System.out.println(m);
 			}
 			Teste.esperar(500);
 		}

@@ -1,10 +1,9 @@
 package excecoes;
 
+@SuppressWarnings("serial")
 public class VitoriaException extends RuntimeException{
 
-	public VitoriaException() {
-		
-	}
+	public VitoriaException() {}
 	
 	public String getMessage() {
 		return "\n                   PARABÉNS                 \n"

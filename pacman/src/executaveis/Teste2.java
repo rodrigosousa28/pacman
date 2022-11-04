@@ -1,9 +1,11 @@
 package executaveis;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import excecoes.GameOverException;
 import excecoes.MovimentoInvalidoException;
+import excecoes.MovimentoInvalidoObstaculoException;
 import excecoes.VitoriaException;
 
 public class Teste2 {
@@ -148,11 +150,15 @@ public class Teste2 {
 			System.out.println(m);
 			System.out.println(e.getMessage());
 			break;
-		}catch(MovimentoInvalidoException e) {
+		}catch (MovimentoInvalidoException e) {
 			System.out.println(e.getMessage() + "ZONA DE PERIGO!");
-		}catch(ArrayIndexOutOfBoundsException a) {
+		}catch (ArrayIndexOutOfBoundsException a) {
 			System.out.println("NÃO VÁ! ZONA DE PERIGO");
-		}catch(VitoriaException v) {
+		}catch (MovimentoInvalidoObstaculoException movimento){
+			System.out.println("errooou");
+			System.out.println(m);
+		}
+		catch(VitoriaException v) {
 			System.out.println(m);
 			System.out.println(v.getMessage());
 			break;

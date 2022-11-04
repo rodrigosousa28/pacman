@@ -5,6 +5,7 @@ import java.util.Random;
 import excecoes.GameOverException;
 import excecoes.InicioInvalidoException;
 import excecoes.MovimentoInvalidoException;
+import excecoes.MovimentoInvalidoObstaculoException;
 import excecoes.Validar;
 
 public class Obstaculo extends Personagem{
@@ -67,42 +68,54 @@ public class Obstaculo extends Personagem{
 	mas levando em consideração o contexto
 	Falta corrigir alguns bugs*/
 	public void mover(String comando) {
+		int linhaAtual = getY();
+		int colunaAtual = getX();
+		
 		try {
 			Validar.movimentoObstaculo(comando, this);
 			super.mover();
 			if(comando.equalsIgnoreCase("up")) {
 				//Quer dizer que o robô está acima
 				if(matriz.getRobo().getY() < this.getY()) {
-					this.setY(getY() - 1);
+					linhaAtual--;
 				//Quer dizer que o robô está abaixo
 				}else {
-					this.setY(getY() + 1);				
+					linhaAtual++;
 				}
 			}else if(comando.equalsIgnoreCase("down")) {
 				//Quer dizer que o robô está acima
 				if(matriz.getRobo().getY() < this.getY()) {
-					this.setY(getY() - 1);
+					linhaAtual--;
 				//Quer dizer que o robô está abaixo
 				}else {
-					this.setY(getY() + 1);				
+					linhaAtual++;
 				}
 			}else if(comando.equalsIgnoreCase("right")) {
 				//Quer dizer que o robô está a direita
 				if(matriz.getRobo().getX() > this.getX()) {
-					this.setX(getX() + 1);
+					colunaAtual++;
 				//Quer dizer que o robô está a esquerda ou na mesma coluna
 				}else {
-					this.setX(getX() - 1);
+					colunaAtual--;
 				}
 			}else if(comando.equalsIgnoreCase("left")) {
 				//Quer dizer que o robô está a direita
 				if(matriz.getRobo().getX() > this.getX()) {
-					this.setX(getX() + 1);
+					colunaAtual++;
 					//Quer dizer que o robô está a esquerda ou na mesma coluna
 				}else {
-					this.setX(getX() - 1);
+					colunaAtual--;
 				}	
-			}	
+			}
+			
+			if(matriz.getCampo()[linhaAtual][colunaAtual] == matriz.getCampo()[matriz.getLinhaObjetivo()][matriz.getColunaObjetivo()]) {
+				throw new MovimentoInvalidoObstaculoException();
+			}
+			
+			//Só vai realizar o movimento se não gerar a exceção
+			setX(colunaAtual);
+			setY(linhaAtual);
+
 			matriz.setPosicao(getY(), getX(), obstaculo);
 		}catch(MovimentoInvalidoException e) {}
 		if(matriz.getRobo().getX() == this.getX() && matriz.getRobo().getY() == this.getY()) {

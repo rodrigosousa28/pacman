@@ -40,26 +40,32 @@ public class Validar {
 		boolean podeIrDireita = true;
 		boolean podeIrEsquerda = true;
 		
+		
 		if(comando.equalsIgnoreCase("up")) {
 			linha--;
 			podeSubir = Validar.validar(matriz, linha, coluna);
+			if(!podeSubir) {
+				throw new MovimentoInvalidoException(obstaculo.getNome());
+			}
 		}else if(comando.equalsIgnoreCase("down")) {
 			linha++;
 			podeDescer = Validar.validar(matriz, linha, coluna);
+			if(!podeDescer) {
+				throw new MovimentoInvalidoException(obstaculo.getNome());
+			}
 		}else if(comando.equalsIgnoreCase("left")) {
 			coluna--;
 			podeIrEsquerda = Validar.validar(matriz, linha, coluna);
+			if(!podeIrEsquerda) {
+				throw new MovimentoInvalidoException(obstaculo.getNome());
+			}
 		}else if(comando.equalsIgnoreCase("right")) {
 			coluna++;
 			podeIrDireita = Validar.validar(matriz, linha, coluna);
+			if(!podeIrDireita) {
+				throw new MovimentoInvalidoException(obstaculo.getNome());
+			}
 		}
-		
-		boolean podeMover = podeSubir && podeDescer && podeIrDireita && podeIrEsquerda;
-		
-		if(!podeMover) {
-			throw new MovimentoInvalidoException(obstaculo.getNome());
-		}
-
 	}
 	
 	public static void inicio(Matriz matriz, int linha, int coluna) {
