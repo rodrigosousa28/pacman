@@ -64,7 +64,12 @@ public class Validar {
 	
 	public static void inicio(Matriz matriz, int linha, int coluna) {
 		boolean podeIniciar = Validar.validar(matriz, linha, coluna);
-		if(!podeIniciar) {
+		
+		int linhaObjetivo = matriz.getLinhaObjetivo();
+		int colunaObjetivo = matriz.getColunaObjetivo();
+		
+		boolean espacoObjetivo = linhaObjetivo == linha && colunaObjetivo == coluna;
+		if(!podeIniciar || espacoObjetivo) {
 			throw new InicioInvalidoException();
 		}
 	}

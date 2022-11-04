@@ -41,9 +41,11 @@ public class Matriz {
 		}
 	}
 
-	//Esse aqui vc sabe pra que serve
 	public String toString() {
 		String m = "";
+		m += "\n";
+		m += "————————————————————————————————————";
+		m += "\n";
 		for(int i = 0; i < linhas; i++) {
 			for(int j = 0; j < colunas; j++) {
 				m += campo[i][j];
@@ -52,11 +54,11 @@ public class Matriz {
 		}
 		m += "\n";
 		m += "————————————————————————————————————";
+		m += "\n";
 		return m;
 	}
 	
-	//Usado apenas no construtor da classe Robô
-	//e não no método main
+	//Usado apenas no construtor da classe Robô e não no método main
 	public void setRobo(Heroi robo) {
 		this.robo = robo;
 	}
@@ -110,8 +112,8 @@ public class Matriz {
 		
 		//Serão usados para ajudar no
 		//tratamento de exceções dos obstáculos
-		setLinhaObjetivo(linha);
-		setColunaObjetivo(linha);
+		linhaObjetivo = linha;
+		colunaObjetivo = coluna;
 		modoDeJogo = modo;
 		
 		int quantidadeObstaculos = 0;

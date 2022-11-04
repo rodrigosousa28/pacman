@@ -25,23 +25,21 @@ public class Obstaculo extends Personagem{
 		int linhaObstaculo = random.nextInt(11);
 		int colunaObstaculo = random.nextInt(11);
 		
-		setY(linhaObstaculo);
-		setX(colunaObstaculo);
-		
 		try {
 			Validar.inicio(matriz, linhaObstaculo, colunaObstaculo);
 		} catch (InicioInvalidoException e) {
 			setMatriz(matriz);
-			System.out.println("tentando dnv...");
 		}
 		
+		setY(linhaObstaculo);
+		setX(colunaObstaculo);
+
 		final String ANSI_COLOR;
 		final String ANSI_RESET = "\u001B[0m";
 		
 		switch(matriz.getModoDeJogo()) {
 		case 1:
-			ANSI_COLOR = "\u001B[36m";
-			obstaculo = ANSI_COLOR + "🐺 " + ANSI_RESET;
+			obstaculo = "🐺 ";
 			nome = "Lobo";
 			break;
 		case 2:

@@ -7,6 +7,7 @@ import java.util.Random;
 
 import excecoes.GameOverException;
 import excecoes.Validar;
+import excecoes.VitoriaException;
 
 public class Heroi extends Personagem{
 	private final String HEROI;
@@ -96,6 +97,10 @@ public class Heroi extends Personagem{
 		}
 		
 		matriz.setPosicao(getY(), getX(), getHeroi());
+		
+		if(matriz.getCampo()[getY()][getX()] == matriz.getCampo()[matriz.getLinhaObjetivo()][matriz.getColunaObjetivo()]) {
+			throw new VitoriaException();
+		}
 		for(Obstaculo obstaculo: matriz.getObstaculos()) {
 			if(obstaculo.getX() == getX() && obstaculo.getY() == getY()) {
 				matriz.setPosicao(getY(), getX(), obstaculo.getObstaculo());

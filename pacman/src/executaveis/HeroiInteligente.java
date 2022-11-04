@@ -104,6 +104,7 @@ public class HeroiInteligente extends Heroi{
 				return possibilidade.getValue();
 			}
 		}
+		
 		return null;
 	}
 

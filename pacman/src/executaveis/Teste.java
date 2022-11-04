@@ -3,6 +3,8 @@ package executaveis;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import excecoes.GameOverException;
+
 //import excecoes.GameOverException;
 
 public class Teste {
@@ -16,16 +18,30 @@ public class Teste {
 		System.out.println("FIM!!!!");*/
 		
 		Matriz m = new Matriz();
-		m.setModoDeJogo(4, 2);
-		Heroi h = new HeroiInteligente("preto", m);
+		m.setModoDeJogo(2, 3);
+		Heroi h = new Heroi("preto", m);
+		System.out.println(m.getColunaObjetivo());
+		System.out.println(m.getLinhaObjetivo());
 		
 		boolean condition = true;
 		Scanner scan = new Scanner(System.in);
+		Integer comand = 0;
 		while(condition){
 			System.out.println(m);
 			System.out.print("Comando: ");
 			String comando = scan.nextLine();
-			h.mover(comando);
+			try {
+				try {
+					comand = Integer.parseInt(comando);
+					h.mover(comand);
+				}catch(Exception e) {
+					h.mover(comando);
+				}
+			} catch (GameOverException e) {
+				System.out.println(m);
+				System.out.println(e.getMessage());
+				break;
+			}
 			Teste.esperar(500);
 		}
 		scan.close();
