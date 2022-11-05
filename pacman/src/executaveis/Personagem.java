@@ -37,8 +37,10 @@ public abstract class Personagem {
 		this.y = y;
 	}
 	
-	//Optei por colocar essa parte do código aqui na super classe
-	//porque é comum tanto ao Robô, como ao Obstáculo
+	/*Optei por colocar essa parte do código aqui na super classe
+	porque é comum tanto ao Herói, como ao Obstáculo
+	Basicamente, esse comando faz o personagem sumir da posição atual,
+	Antes de se mover*/
 	public void mover() {
 		if(getY() != 5 && getX() != 5) {
 			matriz.setPosicao(getY(), getX(), "   ");

@@ -24,9 +24,11 @@ public class HeroiInteligente extends Heroi{
 				.equalsIgnoreCase("—— ");
 		boolean condicao4 = matriz.getCampo()[linhaAtual][colunaAtual]
 				.equalsIgnoreCase("|  ");
+		boolean condicao5 = matriz.getCampo()[linhaAtual][colunaAtual]
+				.equalsIgnoreCase(matriz.getCampo()[matriz.getLinhaObjetivo()][matriz.getColunaObjetivo()]);
 		
 		
-		boolean condicao = condicao1 || condicao2 || condicao3 || condicao4;
+		boolean condicao = condicao1 || condicao2 || condicao3 || condicao4 || condicao5;
 		return condicao;
 	}
 

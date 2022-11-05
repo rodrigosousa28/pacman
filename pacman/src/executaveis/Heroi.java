@@ -10,12 +10,12 @@ import excecoes.Validar;
 import excecoes.VitoriaException;
 
 public class Heroi extends Personagem{
-	private final String HEROI;
-	private String emoji;
+	protected String heroi;
+	protected String emoji;
 
 	public Heroi(String color, Matriz matriz) {
 		super(matriz);
-		matriz.setRobo(this);
+		matriz.setHeroi(this);
 		this.x = 5;
 		this.y = 5;
 		
@@ -36,35 +36,40 @@ public class Heroi extends Personagem{
 			ANSI_COLOR = "\u001B[36m";
 		}
 		
-		switch(matriz.getModoDeJogo()) {
-		case 1:
+		boolean condicao1 = matriz.getModoDeJogo() == 1 || matriz.getModoDeJogo() == 5;
+		boolean condicao2 = matriz.getModoDeJogo() == 2 || matriz.getModoDeJogo() == 6;
+		boolean condicao3 = matriz.getModoDeJogo() == 3 || matriz.getModoDeJogo() == 7;
+		boolean condicao4 = matriz.getModoDeJogo() == 4 || matriz.getModoDeJogo() == 8;
+		
+		if(condicao1) {
 			emoji = "👨‍🌾 ";
 			super.nome = "Fazendeiro";
-			break;
-		case 2:
+		}else if(condicao2) {
 			emoji = "🤖 ";
 			super.nome = "Robô";
-			break;
-		case 3:
+		}else if(condicao3) {
 			emoji = "👮 ";
 			super.nome = "Policial";
-			break;
-		case 4:
+		}else if(condicao4) {
 			emoji = "🐀 ";
 			super.nome = "Rato";
-			break;
 		}
+		
 		color = ANSI_COLOR + emoji + ANSI_RESET;
-		this.HEROI = color;
+		this.heroi = color;
 		
 		setY(y);
 		setX(x);
 		
-		matriz.setPosicao(x, y, this.HEROI);
+		matriz.setPosicao(x, y, this.heroi);
 	}
 
 	public String getHeroi() {
-		return HEROI;
+		return heroi;
+	}
+	
+	protected Heroi(Matriz matriz) {
+		super(matriz);
 	}
 	
 	
@@ -74,40 +79,43 @@ public class Heroi extends Personagem{
 		int proximaColuna = getX();
 				
 		if(comando.equalsIgnoreCase("up")) {
-			proximaLinha = getY() - 1;
+			proximaLinha--;
 			Validar.movimento(this, proximaLinha, proximaColuna);
 			super.mover();
-			setY(proximaLinha);
-			proximaLinha++;
 		}else if(comando.equalsIgnoreCase("down")) {
-			proximaLinha = getY() + 1;
+			proximaLinha++;
 			Validar.movimento(this, proximaLinha, proximaColuna);
 			super.mover();
-			setY(proximaLinha);
 		}else if(comando.equalsIgnoreCase("right")) {
-			proximaColuna = getX() + 1;
+			proximaColuna++;
 			Validar.movimento(this, proximaLinha, proximaColuna);
 			super.mover();
-			setX(proximaColuna);
 		}else if(comando.equalsIgnoreCase("left")) {
-			proximaColuna = getX() - 1;
+			proximaColuna--;
 			Validar.movimento(this, proximaLinha, proximaColuna);
 			super.mover();
-			setX(proximaColuna);
 		}
+
+		setX(proximaColuna);
+		setY(proximaLinha);
 		
-		matriz.setPosicao(getY(), getX(), getHeroi());
+		matriz.setPosicao(proximaLinha, proximaColuna, getHeroi());
 		
-		if(matriz.getCampo()[getY()][getX()] == matriz.getCampo()[matriz.getLinhaObjetivo()][matriz.getColunaObjetivo()]) {
+		String posicaoHeroi = matriz.getCampo()[getY()][getX()];
+		String posicaoObjetivo = matriz.getCampo()[matriz.getLinhaObjetivo()][matriz.getColunaObjetivo()];
+		
+		if(posicaoHeroi.equalsIgnoreCase(posicaoObjetivo)) {
 			throw new VitoriaException();
 		}
-		for(Obstaculo obstaculo: matriz.getObstaculos()) {
-			if(obstaculo.getX() == getX() && obstaculo.getY() == getY()) {
-				matriz.setPosicao(getY(), getX(), obstaculo.getObstaculo());
-				throw new GameOverException();
-			}
-		}
 		
+		if (matriz.getModoDeJogo() < 5) {
+			for (Obstaculo obstaculo : matriz.getObstaculos()) {
+				if (obstaculo.getX() == getX() && obstaculo.getY() == getY()) {
+					matriz.setPosicao(proximaLinha, proximaColuna, obstaculo.getObstaculo());
+					throw new GameOverException();
+				}
+			} 
+		}
 		//Os obstáculos só irão se mover se a dificuldade for
 		//no mínimo 2
 		if(matriz.getDificuldade() > 1) {
@@ -136,7 +144,7 @@ public class Heroi extends Personagem{
 	
 	//Usado somente na classe main que os robôs se moverem aleatoriamente
 	public void mover() {
-		super.mover();
+
 		Random random = new Random();
 		int comando = random.nextInt(1, 5);
 		Map<Integer, String> possibilidades;

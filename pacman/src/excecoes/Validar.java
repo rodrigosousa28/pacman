@@ -26,12 +26,15 @@ public class Validar {
 	
 	public static void movimento
 	(Heroi heroi, int proximaLinha, int proximaColuna) {
-		if(proximaLinha > 5 || proximaColuna < 5) {
+		boolean dentroDasLinhasValidas = proximaLinha <= 5 && proximaLinha >= 0;
+		boolean dentroDasColunasValidas = proximaColuna >= 5 && proximaColuna < 11;
+		if(!(dentroDasLinhasValidas && dentroDasColunasValidas)) {
 			throw new MovimentoInvalidoException(heroi.getNome());
 		}
 	}
 	
 	public static void movimentoObstaculo(String comando, Obstaculo obstaculo) {
+		
 		Matriz matriz = obstaculo.getMatriz();
 		int linha = obstaculo.getY();
 		int coluna = obstaculo.getX();

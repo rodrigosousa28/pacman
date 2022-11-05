@@ -76,7 +76,7 @@ public class Obstaculo extends Personagem{
 			super.mover();
 			if(comando.equalsIgnoreCase("up")) {
 				//Quer dizer que o robô está acima
-				if(matriz.getRobo().getY() < this.getY()) {
+				if(matriz.getHeroi().getY() < this.getY()) {
 					linhaAtual--;
 				//Quer dizer que o robô está abaixo
 				}else {
@@ -84,7 +84,7 @@ public class Obstaculo extends Personagem{
 				}
 			}else if(comando.equalsIgnoreCase("down")) {
 				//Quer dizer que o robô está acima
-				if(matriz.getRobo().getY() < this.getY()) {
+				if(matriz.getHeroi().getY() < this.getY()) {
 					linhaAtual--;
 				//Quer dizer que o robô está abaixo
 				}else {
@@ -92,7 +92,7 @@ public class Obstaculo extends Personagem{
 				}
 			}else if(comando.equalsIgnoreCase("right")) {
 				//Quer dizer que o robô está a direita
-				if(matriz.getRobo().getX() > this.getX()) {
+				if(matriz.getHeroi().getX() > this.getX()) {
 					colunaAtual++;
 				//Quer dizer que o robô está a esquerda ou na mesma coluna
 				}else {
@@ -100,7 +100,7 @@ public class Obstaculo extends Personagem{
 				}
 			}else if(comando.equalsIgnoreCase("left")) {
 				//Quer dizer que o robô está a direita
-				if(matriz.getRobo().getX() > this.getX()) {
+				if(matriz.getHeroi().getX() > this.getX()) {
 					colunaAtual++;
 					//Quer dizer que o robô está a esquerda ou na mesma coluna
 				}else {
@@ -118,7 +118,7 @@ public class Obstaculo extends Personagem{
 
 			matriz.setPosicao(getY(), getX(), obstaculo);
 		}catch(MovimentoInvalidoException e) {}
-		if(matriz.getRobo().getX() == this.getX() && matriz.getRobo().getY() == this.getY()) {
+		if(matriz.getHeroi().getX() == this.getX() && matriz.getHeroi().getY() == this.getY()) {
 			throw new GameOverException();
 		}
 	}

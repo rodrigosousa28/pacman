@@ -11,13 +11,14 @@ public class Matriz {
 	private String objetivo;
 	private int linhaObjetivo;
 	private int colunaObjetivo;
-	private int modoDeJogo;
-	private int dificuldade;
-	private Heroi robo;
+	private int modoDeJogo = 0;
+	private int dificuldade = 0;
+	private Heroi heroi;
+	private AntiHeroi antiHeroi;
 	private ArrayList<Obstaculo> obstaculos;
 
 	/*Construtor da classe matriz sempre terá 11 linhas
-	 e 11 colunas, aí a área usável pelo robô vai ser
+	 e 11 colunas, aí a área usável pelo heroi vai ser
 	 um quadrado de lado 5, como o PH pediu
 	 */
 	public Matriz() {
@@ -58,14 +59,18 @@ public class Matriz {
 		return m;
 	}
 	
-	//Usado apenas no construtor da classe Robô e não no método main
-	public void setRobo(Heroi robo) {
-		this.robo = robo;
+	//Usado apenas no construtor da classe heroi e não no método main
+	public void setHeroi(Heroi heroi) {
+		this.heroi = heroi;
 	}
 	
 	//Usado para auxiliar na classe obstáculo
-	public Heroi getRobo() {
-		return robo;
+	public Heroi getHeroi() {
+		return heroi;
+	}
+	
+	public AntiHeroi getAntiHeroi() {
+		return antiHeroi;
 	}
 	
 	public String[][] getCampo(){
@@ -79,11 +84,11 @@ public class Matriz {
 	}
 	
 	/*Usar no método main imediatamente após instanciar 
-	a matriz, e só depois instanciar o Robô
-	pois o robô vai ter como base
+	a matriz, e só depois instanciar o heroi
+	pois o heroi vai ter como base
 	o modo de jogo para ser definido qual personagem
 	vai representá-lo*/
-	public void setModoDeJogo(int modo, int dificuldade) {
+	public void setModoDeJogo(int modoDeJogo, int dificuldade) {
 
 		Random random = new Random();
 		int linha = random.nextInt(1, 6);
@@ -91,7 +96,7 @@ public class Matriz {
 		
 		final String ANSI_RESET = "\u001B[0m";
 		String ANSI_COLOR = "\u001B[31m";
-		switch(modo) {
+		switch(modoDeJogo) {
 		case 1:
 			ANSI_COLOR = "\u001B[33m";
 			objetivo = ANSI_COLOR + "🌽 " + ANSI_RESET;
@@ -114,7 +119,7 @@ public class Matriz {
 		//tratamento de exceções dos obstáculos
 		linhaObjetivo = linha;
 		colunaObjetivo = coluna;
-		modoDeJogo = modo;
+		this.modoDeJogo = modoDeJogo;
 		
 		int quantidadeObstaculos = 0;
 		
@@ -138,12 +143,45 @@ public class Matriz {
 		this.dificuldade = dificuldade;
 	}
 	
-	//Usado para auxiliar no método mover, do robô
+	//Used on main class 2
+	public void setModoDeJogo(int modoDeJogo) {
+		int linha = 2;
+		int coluna = 8;
+		
+		final String ANSI_RESET = "\u001B[0m";
+		String ANSI_COLOR = "\u001B[31m";
+		switch(modoDeJogo) {
+		case 5:
+			ANSI_COLOR = "\u001B[33m";
+			objetivo = ANSI_COLOR + "🌽 " + ANSI_RESET;
+			break;
+		case 6:
+			ANSI_COLOR = "\u001B[31m";
+			objetivo = ANSI_COLOR + "❤ " + ANSI_RESET;
+			break;
+		case 7:
+			ANSI_COLOR = "\u001B[32m";
+			objetivo = "🦹‍♂️ ";
+			break;
+		case 8:
+			ANSI_COLOR = "\u001B[33m";
+			objetivo = ANSI_COLOR + "🧀 " + ANSI_RESET;
+		}
+		
+		setPosicao(linha, coluna, objetivo);
+		
+		linhaObjetivo = linha;
+		colunaObjetivo = coluna;
+		this.modoDeJogo = modoDeJogo;
+		
+	}
+	
+	//Usado para auxiliar no método mover, do heroi
 	public ArrayList<Obstaculo> getObstaculos() {
 		return obstaculos;
 	}
 	
-	/*Usado para auxiliar no construtor da classe robo
+	/*Usado para auxiliar no construtor da classe heroi
 	e da classe Obstaculo*/
 	public int getModoDeJogo() {
 		return modoDeJogo;

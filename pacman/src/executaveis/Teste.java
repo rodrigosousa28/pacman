@@ -21,8 +21,8 @@ public class Teste {
 		Matriz m = new Matriz();
 		m.setModoDeJogo(2, 3);
 		Heroi h = new Heroi("preto", m);
-		System.out.println(m.getColunaObjetivo());
 		System.out.println(m.getLinhaObjetivo());
+		System.out.println(m.getColunaObjetivo());
 		
 		boolean condition = true;
 		Scanner scan = new Scanner(System.in);
