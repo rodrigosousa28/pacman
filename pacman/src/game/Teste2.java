@@ -1,12 +1,11 @@
-package executaveis;
+package game;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import excecoes.GameOverException;
-import excecoes.MovimentoInvalidoException;
-import excecoes.MovimentoInvalidoObstaculoException;
-import excecoes.VitoriaException;
+import excecoes.*;
+import matriz.Matriz;
+import personagens.Heroi;
 
 public class Teste2 {
     public static void main(String[] args) {
@@ -69,12 +68,12 @@ public class Teste2 {
 
     System.out.println("\n\nNÃO ME IMPORTA!!");
     Teste2.esperar(500);
-    System.out.println("LEVEL 1: Seja franco né, você ainda deve andar de fralda e quem limpa seu bumbum é sua mãe.\n");
+    System.out.println("\nLEVEL 1: Seja franco né, você ainda deve andar de fralda e quem limpa seu bumbum é sua mãe.\n");
     Teste2.esperar(3000);
     System.out.println("LEVEL 2: Tá... é até aceitavel, mas ainda é motivo para ser zoado na roda de amigos.\n");
     Teste2.esperar(3000);
     System.out.println("LEVEL 3: Você tem coragem, mas não é o suficiente para ganhar meu respeito.\n");
-    Teste2.esperar(3000);
+    Teste2.esperar(1500);
     
     System.out.print("ESCOLHA: ");
     int dificuldade = scan.nextInt();
@@ -102,7 +101,7 @@ public class Teste2 {
     System.out.println(" |   L   |   |   D   |   |   R   |            |   3   |   |   2   |   |   4   |      ");
     System.out.println(" |       |   |       |   |       |            |       |   |       |   |       |      ");
     System.out.println("  -------     -------     -------              -------     -------     -------       ");
-    Teste2.esperar(500);
+    Teste2.esperar(2000);
     System.out.println("            AVISO DE BÔNUS - ESCOLHA A COR DO SEU PERSONAGEM\n                       ");
     Teste2.esperar(1000);
     System.out.println("          PRETO - VERMELHO - VERDE - AMARELO - AZUL - ROXO - CIANO                   ");
@@ -116,18 +115,25 @@ public class Teste2 {
     Heroi heroi = new Heroi(color, m);
     
     System.out.println("===============================        GAMER       ================================");
+    System.out.println();
     Teste2.esperar(1200);
     System.out.println("                   Sua jornada começa aqui                                                                  ");
+    System.out.println();
     Teste2.esperar(1200);
     System.out.println("                                 Lhe desejo sorte                                                           ");
+    System.out.println();
     Teste2.esperar(1200);
     System.out.println("                                           Cuidado com o que você está atrás                                                      ");
+    System.out.println();
     Teste2.esperar(1200);
     System.out.println("          Um descuido e você é só história                                                   ");
+    System.out.println();
     Teste2.esperar(1200);
     System.out.println("                                            Então não bata de frente com o que você TEME.                              ");
+    System.out.println();
     Teste2.esperar(1200);
     System.out.println("\n\nREGRAS: Corras dos obstaculos\n        Recupere o objetivo\n        Não saia do quadrante do objetivo\n        Ganhe ");
+    System.out.println();
     Teste2.esperar(1200);
     
     boolean condition = true;

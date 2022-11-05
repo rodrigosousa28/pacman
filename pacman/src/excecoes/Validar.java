@@ -1,8 +1,8 @@
 package excecoes;
 
-import executaveis.Heroi;
-import executaveis.Matriz;
-import executaveis.Obstaculo;
+import matriz.Matriz;
+import personagens.Heroi;
+import personagens.Obstaculo;
 
 public class Validar {
 

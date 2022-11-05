@@ -1,7 +1,11 @@
-package executaveis;
+package game;
 
 import excecoes.GameOverException;
 import excecoes.MovimentoInvalidoException;
+import matriz.Matriz;
+import personagens.AntiHeroi;
+import personagens.Heroi;
+import personagens.HeroiInteligente;
 
 public class Teste3 {
 

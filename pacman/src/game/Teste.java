@@ -1,10 +1,12 @@
-package executaveis;
+package game;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import excecoes.GameOverException;
 import excecoes.MovimentoInvalidoException;
+import matriz.Matriz;
+import personagens.Heroi;
 
 //import excecoes.GameOverException;
 

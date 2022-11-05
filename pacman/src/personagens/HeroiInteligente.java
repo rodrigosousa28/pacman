@@ -1,4 +1,4 @@
-package executaveis;
+package personagens;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import excecoes.MovimentoInvalidoException;
+import matriz.Matriz;
 
 public class HeroiInteligente extends Heroi{
 

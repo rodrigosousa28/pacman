@@ -1,4 +1,4 @@
-package executaveis;
+package personagens;
 
 import java.util.Random;
 
@@ -7,6 +7,7 @@ import excecoes.InicioInvalidoException;
 import excecoes.MovimentoInvalidoException;
 import excecoes.MovimentoInvalidoObstaculoException;
 import excecoes.Validar;
+import matriz.Matriz;
 
 public class Obstaculo extends Personagem{
 	

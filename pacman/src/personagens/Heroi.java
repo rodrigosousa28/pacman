@@ -1,13 +1,12 @@
-package executaveis;
+package personagens;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import excecoes.GameOverException;
-import excecoes.Validar;
-import excecoes.VitoriaException;
+import excecoes.*;
+import matriz.Matriz;
 
 public class Heroi extends Personagem{
 	protected String heroi;

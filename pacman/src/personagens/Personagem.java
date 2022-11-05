@@ -1,4 +1,6 @@
-package executaveis;
+package personagens;
+
+import matriz.Matriz;
 
 public abstract class Personagem {
 

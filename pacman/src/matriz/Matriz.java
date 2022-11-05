@@ -1,7 +1,9 @@
-package executaveis;
+package matriz;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import personagens.*;
 
 public class Matriz {
 
