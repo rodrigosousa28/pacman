@@ -120,4 +120,32 @@ public class HeroiInteligente extends Heroi{
 			super.mover(movimentoAlternativo);
 		}
 	}
+	
+	public void mover() {
+		int distanciaX = x - matriz.getColunaObjetivo();
+		int distanciaY = y - matriz.getLinhaObjetivo();
+		int diferencaX = Math.abs(distanciaX);
+		int diferencaY = Math.abs(distanciaY);
+		
+		//prioridade ao x
+		if(diferencaX > diferencaY) {
+			if(distanciaX < 0) {
+				this.mover("right");			
+			}else {
+				this.mover("left");
+			}
+		//prioridade ao y
+		}else {
+			if(distanciaY < 0) {
+				this.mover("down");
+			}else {
+				this.mover("up");
+			}
+		}
+		
+	}
+	
+	
+	
+	
 }

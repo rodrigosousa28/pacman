@@ -67,6 +67,7 @@ public class Heroi extends Personagem{
 		return heroi;
 	}
 	
+	//Usado no AntiHeroi
 	protected Heroi(Matriz matriz) {
 		super(matriz);
 	}
@@ -107,6 +108,7 @@ public class Heroi extends Personagem{
 			throw new VitoriaException();
 		}
 		
+		//Tem que ser menor do que 5, pois a partir do modo 5, não há obstáculos
 		if (matriz.getModoDeJogo() < 5) {
 			for (Obstaculo obstaculo : matriz.getObstaculos()) {
 				if (obstaculo.getX() == getX() && obstaculo.getY() == getY()) {
@@ -138,28 +140,13 @@ public class Heroi extends Personagem{
 		case 4:
 			this.mover("left");
 		}
-		
 	}
 	
 	//Usado somente na classe main que os robôs se moverem aleatoriamente
 	public void mover() {
-
 		Random random = new Random();
 		int comando = random.nextInt(1, 5);
-		Map<Integer, String> possibilidades;
-		
-		possibilidades = new HashMap<>();
-		possibilidades.put(1, "up");
-		possibilidades.put(2, "down");
-		possibilidades.put(3, "right");
-		possibilidades.put(4, "left");
-		
-		for(Entry<Integer, String> possibilidade: possibilidades.entrySet()){
-			if(possibilidade.getKey() == comando) {
-				this.mover(possibilidade.getValue());
-				break;
-			}
-		}
+		this.mover(comando);
 	}
 
 }
