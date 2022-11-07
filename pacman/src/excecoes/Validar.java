@@ -1,6 +1,7 @@
 package excecoes;
 
 import matriz.Matriz;
+import personagens.AntiHeroi;
 import personagens.Heroi;
 import personagens.Obstaculo;
 
@@ -82,5 +83,6 @@ public class Validar {
 			throw new InicioInvalidoException();
 		}
 	}
+	
 	
 }

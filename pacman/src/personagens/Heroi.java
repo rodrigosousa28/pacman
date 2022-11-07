@@ -98,6 +98,7 @@ public class Heroi extends Personagem{
 		setX(proximaColuna);
 		setY(proximaLinha);
 		
+		
 		matriz.setPosicao(proximaLinha, proximaColuna, getHeroi());
 		
 		String posicaoHeroi = matriz.getCampo()[getY()][getX()];

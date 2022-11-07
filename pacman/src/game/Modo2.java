@@ -11,7 +11,7 @@ import personagens.AntiHeroi;
 import personagens.Heroi;
 import personagens.HeroiInteligente;
 
-public class Teste3 {
+public class Modo2 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("=============================================================== MODO TELESPECTADOR ================================================================ ");
@@ -21,19 +21,19 @@ public class Teste3 {
 	    System.out.println("                                           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ \n                                            ");
 		
 	    System.out.println("\nLoading...");
-	    Teste.esperar(2500);
+	    Teste.esperar(1500);
 		
 	    System.out.println(" ================================================================ BEM-VINDO AO GAME! =============================================================== ");
 	    System.out.println();
 	    System.out.println(" ==================================================   Todos temos nossas própias histórias...  ===================================================== ");
 	    System.out.println();
-	    Teste.esperar(2000);
+	    Teste.esperar(1500);
 	    System.out.println(" =============================================   Porém, nesse modo você contemplará a melhor forma     ============================================= ");
 	    System.out.println();
-	    Teste.esperar(2000);
+	    Teste.esperar(1500);
 	    System.out.println(" ======================================================   de se vivenciar cada uma delas   ========================================================= ");
 	    System.out.println();
-	    Teste.esperar(2000);
+	    Teste.esperar(1500);
 	    
 	    System.out.println(" ============================================================    ESCOLHA O HERÓI!!!   ============================================================== ");
 	    System.out.println();
@@ -58,11 +58,10 @@ public class Teste3 {
 	  
 	    if(condicaoModo) {
 	        Teste.esperar(1000);
-	    	System.out.println("Ok, vá para o menu de dificuldade agora.\n");
 	    	m.setModoDeJogo(modo);
 	    }else {
 	        Teste.esperar(1000);
-	    	System.out.println("Já que você escolheu errado... agora você é um rato.\n");
+	    	System.out.println("Já que você escolheu errado... Seu Herói é um rato.\n");
 	    	m.setModoDeJogo(8);
 	    }
     	
@@ -107,11 +106,12 @@ public class Teste3 {
 	    System.out.print("ESCOLHA:");
 	    int choice = scan.nextInt();
 	    while(!(choice==1 || choice == 2)) {
+	    	System.out.println();
 	    	System.out.print("Escolha 1 ou 2: ");
 	    	choice = scan.nextInt();
 	    }
 
-	    Teste.esperar(1500);
+	    Teste.esperar(100);
 	    System.out.println("\nPRESSIONE QUALQUER TECLA PARA INICIAR: ");
 	    String inicio = scan.next();
 	    
@@ -129,11 +129,11 @@ public class Teste3 {
 	    while(true) {
 	    	try {
 	    		System.out.println(m);
-	    		Teste.esperar(1000);
+	    		Teste.esperar(300);
 	    		heroi.mover();
 	    		System.out.println(m);
 	    	}catch(VitoriaException v1) {
-	    		Teste.esperar(1000);
+	    		Teste.esperar(300);
 	    		System.out.println(m);
 	    		if(choice == 1) {
 	    			System.out.println("\nPARABÉNS, VOCÊ VENCEU!!!");
@@ -141,16 +141,14 @@ public class Teste3 {
 	    			System.out.println("QUE PENA, VOCÊ PERDEU!!!");
 	    		}
 	    		break;
-	    	}catch(MovimentoInvalidoException e1) {	    		
-	    		Teste.esperar(1000);
-	    	}
+	    	}catch(MovimentoInvalidoException e1) {}
 	    	try {
-	    		Teste.esperar(1000);
+	    		Teste.esperar(300);
 	    		System.out.println(m);
 	    		antiHeroi.mover();
 	    		System.out.println(m);
 	    	}catch(VitoriaException v2) {
-	    		Teste.esperar(1000);
+	    		Teste.esperar(300);
 	    		System.out.println(m);
 	    		if(choice == 2) {
 	    			System.out.println("\nPARABÉNS, VOCÊ VENCEU!!!");
@@ -158,9 +156,7 @@ public class Teste3 {
 	    			System.out.println("QUE PENA, VOCÊ PERDEU!!!");
 	    		}
 	    		break;
-	    	}catch(MovimentoInvalidoException e1) {
-	    		Teste.esperar(1000);	    		
-	    	}
+	    	}catch(MovimentoInvalidoException e1) {}
 		}
 	    
 	    scan.close();

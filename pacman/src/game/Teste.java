@@ -3,9 +3,10 @@ package game;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import excecoes.GameOverException;
 import excecoes.MovimentoInvalidoException;
+import excecoes.VitoriaException;
 import matriz.Matriz;
+import personagens.AntiHeroi;
 import personagens.Heroi;
 
 //import excecoes.GameOverException;
@@ -18,7 +19,7 @@ public class Teste {
 		Teste.esperar(1);
 		System.out.println("carregando...");
 		Teste.esperar(3);
-		System.out.println("FIM!!!!");*/
+		System.out.println("FIM!!!!");
 		
 		Matriz m = new Matriz();
 		m.setModoDeJogo(2, 3);
@@ -27,7 +28,6 @@ public class Teste {
 		System.out.println(m.getColunaObjetivo());
 		
 		boolean condition = true;
-		Scanner scan = new Scanner(System.in);
 		Integer comand = 0;
 		while(condition){
 			System.out.println(m);
@@ -49,6 +49,48 @@ public class Teste {
 				System.out.println(m);
 			}
 			Teste.esperar(500);
+		}*/
+		Scanner scan = new Scanner(System.in);
+		Matriz m = new Matriz();
+		m.setModoDeJogo(5);
+		Heroi h = new Heroi("preto", m);
+		Heroi a = new AntiHeroi(m);
+		
+		System.out.println(m.getColunaAntiHeroi());
+		System.out.println(a.getX());
+		System.out.println(m.getLinhaAntiHeroi());
+		System.out.println(a.getY());
+		
+		System.out.println(h.getX());
+		System.out.println(h.getY());
+		System.out.println(m);
+		while(true) {
+			
+	    	try {
+	    		System.out.println(m);
+	    		Teste.esperar(300);
+	    		h.mover();
+	    		System.out.println(m);
+	    	}catch(VitoriaException v1) {
+	    		Teste.esperar(300);
+	    		System.out.println(m);
+	    		break;
+	    	}catch(MovimentoInvalidoException e1) {	    		
+	    		Teste.esperar(300);
+	    	}
+	    	try {
+	    		Teste.esperar(300);
+	    		System.out.println(m);
+	    		a.mover();
+	    		System.out.println(m);
+	    	}catch(VitoriaException v2) {
+	    		Teste.esperar(300);
+	    		System.out.println(m);
+	    		break;
+	    	}catch(MovimentoInvalidoException e1) {
+	    		Teste.esperar(300);	    		
+	    	}
+	    	
 		}
 		scan.close();
 	}
