@@ -1,11 +1,10 @@
 package personagens;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Random;
 
-import excecoes.*;
+import excecoes.GameOverException;
+import excecoes.Validar;
+import excecoes.VitoriaException;
 import matriz.Matriz;
 
 public class Heroi extends Personagem{
@@ -95,7 +94,7 @@ public class Heroi extends Personagem{
 			Validar.movimento(this, proximaLinha, proximaColuna);
 			super.mover();
 		}
-
+		
 		setX(proximaColuna);
 		setY(proximaLinha);
 		
@@ -122,7 +121,7 @@ public class Heroi extends Personagem{
 		if(matriz.getDificuldade() > 1) {
 			for(Obstaculo obstaculo: matriz.getObstaculos()) {
 				obstaculo.mover(comando);
-			}			
+			}
 		}
 	}
 	

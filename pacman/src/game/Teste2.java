@@ -68,7 +68,7 @@ public class Teste2 {
 
     System.out.println("\n\nNÃO ME IMPORTA!!");
     Teste2.esperar(500);
-    System.out.println("\nLEVEL 1: Seja franco né, você ainda deve andar de fralda e quem limpa seu bumbum é sua mãe.\n");
+    System.out.println("\nLEVEL 1: Seja franco né, você ainda deve andar de fralda.\n");
     Teste2.esperar(3000);
     System.out.println("LEVEL 2: Tá... é até aceitavel, mas ainda é motivo para ser zoado na roda de amigos.\n");
     Teste2.esperar(3000);
@@ -156,12 +156,10 @@ public class Teste2 {
 			System.out.println(m);
 			System.out.println(e.getMessage());
 			break;
-		}catch (MovimentoInvalidoException e) {
-			System.out.println(e.getMessage() + "ZONA DE PERIGO!");
-		}catch (ArrayIndexOutOfBoundsException a) {
+		}catch (MovimentoInvalidoException e) {}
+		catch (ArrayIndexOutOfBoundsException a) {
 			System.out.println("NÃO VÁ! ZONA DE PERIGO");
 		}catch (MovimentoInvalidoObstaculoException movimento){
-			System.out.println("errooou");
 			System.out.println(m);
 		}
 		catch(VitoriaException v) {

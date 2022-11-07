@@ -47,7 +47,7 @@ public class Matriz {
 	public String toString() {
 		String m = "";
 		m += "\n";
-		m += "————————————————————————————————————";
+		m += "——————————————————————————————————";
 		m += "\n";
 		for(int i = 0; i < linhas; i++) {
 			for(int j = 0; j < colunas; j++) {
@@ -56,7 +56,7 @@ public class Matriz {
 			m += "\n";
 		}
 		m += "\n";
-		m += "————————————————————————————————————";
+		m += "——————————————————————————————————";
 		m += "\n";
 		return m;
 	}
@@ -64,6 +64,10 @@ public class Matriz {
 	//Usado apenas no construtor da classe heroi e não no método main
 	public void setHeroi(Heroi heroi) {
 		this.heroi = heroi;
+	}
+	
+	public void setAntiHeroi(AntiHeroi antiHeroi) {
+		this.antiHeroi = antiHeroi;
 	}
 	
 	//Usado para auxiliar na classe obstáculo
@@ -208,6 +212,14 @@ public class Matriz {
 		
 	public int getLinhaObjetivo() {
 		return linhaObjetivo;
+	}
+	
+	public int getLinhaAntiHeroi() {
+		return antiHeroi.getY();
+	}
+	
+	public int getColunaAntiHeroi() {
+		return antiHeroi.getX();
 	}
 		
 }

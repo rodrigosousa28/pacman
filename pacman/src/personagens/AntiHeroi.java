@@ -10,7 +10,7 @@ public class AntiHeroi extends Heroi{
 
 	public AntiHeroi(Matriz matriz) {
 		super(matriz);
-		matriz.setHeroi(this);
+		matriz.setAntiHeroi(this);
 		this.x = 9;
 		this.y = 1;
 		
